@@ -4,6 +4,7 @@ export default function Home() {
   return (
     <div>
       <UserButton />
+      <h1>test</h1>
     </div>
   )
 }
