@@ -18,7 +18,19 @@ import {
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
+const formSchema = z.object({
+    title: z.string().min(1, {
+        message: "Title is Required"
+    })
+})
+
 const CreatePage = () => {
+    const form = useForm<z.infer<typeof formSchema>>({
+        resolver: zodResolver(formSchema),
+        defaultValues:{
+            title: ""
+        }
+    })
     return ( 
         <div>Create Page</div>
      );
