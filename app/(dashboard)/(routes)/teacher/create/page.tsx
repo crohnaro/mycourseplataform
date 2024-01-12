@@ -1,45 +1,47 @@
-"use client"
+"use client";
 
-import * as z from "zod"
-import axios from "axios"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { useRouter } from "next/router"
+import * as z from "zod";
+import axios from "axios";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormLabel,
-    FormMessage
-} from "@/components/ui/form"
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const formSchema = z.object({
-    title: z.string().min(1, {
-        message: "Title is Required"
-    })
-})
+  title: z.string().min(1, {
+    message: "Title is Required",
+  }),
+});
 
 const CreatePage = () => {
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
-        defaultValues:{
-            title: ""
-        }
-    })
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      title: "",
+    },
+  });
 
-    const { isSubmitting, isValid } = form.formState
+  const { isSubmitting, isValid } = form.formState;
 
-    const onSubmit = (values: z.infer<typeof formSchema>) => {
-        console.log(values)
-    }
-    return ( 
-        <div>Create Page</div>
-     );
-}
- 
+  const onSubmit = (values: z.infer<typeof formSchema>) => {
+    console.log(values);
+  };
+  return (
+    <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
+      Create Page
+    </div>
+  );
+};
+
 export default CreatePage;
