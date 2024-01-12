@@ -31,6 +31,12 @@ const CreatePage = () => {
             title: ""
         }
     })
+
+    const { isSubmitting, isValid } = form.formState
+
+    const onSubmit = (values: z.infer<typeof formSchema>) => {
+        console.log(values)
+    }
     return ( 
         <div>Create Page</div>
      );
