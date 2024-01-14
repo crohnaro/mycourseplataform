@@ -39,7 +39,10 @@ const CreatePage = () => {
   };
   return (
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
-      Create Page
+      <div>
+        <h1 className="text-2xl"> Name your course</h1>
+        <p>What would you like to name your course? Don&apos;t worry, you can change this later.</p>
+      </div>
     </div>
   );
 };
