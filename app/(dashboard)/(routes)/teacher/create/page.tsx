@@ -11,6 +11,7 @@ import {
   FormControl,
   FormDescription,
   FormField,
+  FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
@@ -41,7 +42,40 @@ const CreatePage = () => {
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
       <div>
         <h1 className="text-2xl"> Name your course</h1>
-        <p>What would you like to name your course? Don&apos;t worry, you can change this later.</p>
+        <p className="text-sm text-slate-600">
+          What would you like to name your course? Don&apos;t worry, you can
+          change this later.
+        </p>
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-8 mt-8"
+          >
+            <FormField
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Course Title</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={isSubmitting}
+                      placeholder="e.g 'Advanced web development"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    What will you teach in this course?
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <div className="">
+
+            </div>
+          </form>
+        </Form>
       </div>
     </div>
   );
