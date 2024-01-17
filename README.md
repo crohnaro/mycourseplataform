@@ -49,11 +49,7 @@ git clone https://github.com/seu-usuario/mycourseplataform.git
 ```
 5. Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis de ambiente:
 ```bash
-DB_HOST=localhost
-DB_PORT=3306
-DB_DATABASE=mycourseplatform
-DB_USERNAME=root
-DB_PASSWORD=
+DATABASE_URL=
 STRIPE_SECRET_KEY=
 STRIPE_PUBLIC_KEY=
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
