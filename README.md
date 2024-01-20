@@ -7,7 +7,7 @@ MyCoursePlatform é uma plataforma de cursos online via vídeo inspirada na Udem
 O objetivo principal do MyCoursePlatform é oferecer uma plataforma de ensino online de qualidade, acessível e inclusiva. A plataforma visa facilitar o acesso ao conhecimento para pessoas de todas as origens e níveis de escolaridade.
 
 ## Link do deploy!
-(ainda sem link)
+(ainda sem link!)
 
 ## Tecnologias Utilizadas
 
