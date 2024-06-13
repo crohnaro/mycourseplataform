@@ -50,10 +50,9 @@ const CreatePage = () => {
   return (
     <div className="max-w-5xl mx-auto flex md:items-center md:justify-center h-full p-6">
       <div>
-        <h1 className="text-2xl"> Name your course</h1>
+        <h1 className="text-2xl">Dê um nome ao seu curso</h1>
         <p className="text-sm text-slate-600">
-          What would you like to name your course? Don&apos;t worry, you can
-          change this later.
+          Como você quer chamar seu curso? Relaxa, isso pode ser alterado depois.
         </p>
         <Form {...form}>
           <form
@@ -65,7 +64,7 @@ const CreatePage = () => {
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Course Title</FormLabel>
+                  <FormLabel>Titulo do Curso</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
@@ -74,7 +73,7 @@ const CreatePage = () => {
                     />
                   </FormControl>
                   <FormDescription>
-                    What will you teach in this course?
+                    O que você vai ensinar no curso?
                   </FormDescription>
                   <FormMessage />
                 </FormItem>
@@ -83,11 +82,11 @@ const CreatePage = () => {
             <div className="">
               <Link href="/">
                 <Button type="button" variant="ghost">
-                  Cancel
+                  Cancelar
                 </Button>
               </Link>
               <Button type="submit" disabled={!isValid || isSubmitting}>
-                Continue
+                Continuar
               </Button>
             </div>
           </form>
