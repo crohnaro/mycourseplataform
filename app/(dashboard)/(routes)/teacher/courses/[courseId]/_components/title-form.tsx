@@ -62,6 +62,31 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
       {!isEditting && (
         <p className="text-sm mt-2">{initialData.title}</p>
       )}
+      {isEditting && (
+        <Form {...form}>
+          <form
+            onSubmit={form.handleSubmit(onSubmit)}
+            className="space-y-4 mt-4"
+          >
+            <FormField 
+              control={form.control}
+              name="title"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <Input
+                    disabled={isSubmitting}
+                    placeholder="Ex: Curso de Desenvolvimento Web"
+                    {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </form>
+        </Form>
+      )}
     </div>
   );
 };
