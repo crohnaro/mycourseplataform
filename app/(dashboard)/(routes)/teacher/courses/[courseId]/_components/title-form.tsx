@@ -4,6 +4,7 @@ import * as z from "zod";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
 
 import {
   Form,
@@ -17,6 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Pencil } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 interface TitleFormProps {
   initialData: {
@@ -40,10 +42,19 @@ export const TitleForm = ({ initialData, courseId }: TitleFormProps) => {
   const [isEditting, setIsEditting] = useState(false);
   const toggleEdit = () => setIsEditting((current) => !current)
 
+  const router = useRouter()
+
   const { isSubmitting, isValid } = form.formState;
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
-    console.log(values);
+    try {
+      await axios.patch(`/api/courses/${courseId}`, values)
+      toast.success("Titulo do curso atualizado")
+      toggleEdit()
+      router.refresh()
+    } catch {
+      toast.error("Algo deu errado")
+    }
   };
   return (
     <div className="mt-6 bg-slate-100 rounded-md p-4">
