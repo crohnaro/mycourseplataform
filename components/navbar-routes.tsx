@@ -19,13 +19,13 @@ export const NavbarRoutes = () => {
         <Link href="/">
           <Button size="sm" variant="ghost">
             <LogOut className="h-4 w-4 mr-4" />
-            Exit
+            Sair
           </Button>
         </Link>
       ) : (
         <Link href="/teacher/courses">
           <Button size="sm" variant="ghost">
-            Teacher Mode
+            Modo Professor
           </Button>
         </Link>
       )}
