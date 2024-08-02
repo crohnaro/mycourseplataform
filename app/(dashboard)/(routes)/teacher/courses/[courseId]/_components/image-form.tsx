@@ -16,11 +16,13 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Pencil, PlusCircle } from "lucide-react";
+import { ImageIcon, Pencil, PlusCircle } from "lucide-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
 import { cn } from "@/lib/utils";
 import { Textarea } from "@/components/ui/textarea";
+import Image from "next/image";
+import { FileUpload } from "@/components/file-upload";
 
 interface ImageFormProps {
   initialData: {
@@ -85,39 +87,38 @@ export const ImageForm = ({
           )}
         </Button>
       </div>
-      {!isEditting && <p className={cn(
-        "text-sm mt-2",
-        !initialData.imageUrl && "text-slate-500 italic"
-      )}>{initialData.imageUrl || "Sem descrição"}</p>}
-      {isEditting && (
-        <Form {...form}>
-          <form
-            onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-4 mt-4"
-          >
-            <FormField
-              control={form.control}
-              name="imageUrl"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Textarea
-                      disabled={isSubmitting}
-                      placeholder="Ex: Esse curso é sobre..."
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+      {!isEditting && (
+        !initialData.imageUrl ? (
+          <div className="flex items-center justify-center h-60 bg-slate-200 rounded-md">
+            <ImageIcon className="h-10 w-10 text-slate-500" />
+          </div>
+        ) : (
+          <div className="relative aspect-video mt-2">
+            <Image 
+              alt="Upload"
+              fill
+              className="object-cover rounded-md"
+              src={initialData.imageUrl}
             />
-            <div className="flex items-center gap-x-2">
-              <Button disabled={!isValid || isSubmitting} type="submit">
-                Salvar
-              </Button>
-            </div>
-          </form>
-        </Form>
+          </div>  
+        )
+      )}
+      {isEditting && (
+        <div>
+          <FileUpload 
+            endpoint="courseImage"
+            onChange={(url) => {
+              if (url) {
+                onSubmit ({
+                  imageUrl: url
+                })
+              }
+            }}
+          />
+          <div className="text-xs text-muted-foreground mt-4">
+            Resolução recomendada 16:9
+          </div>
+        </div>  
       )}
     </div>
   );
