@@ -67,9 +67,9 @@ export const ImageForm = ({
   };
   return (
     <div className="mt-6 bg-slate-100 rounded-md p-4">
-      <div className="font-medium flex items-center justify-between">
+      <div className="font-medium flex items-center justify-between mb-2">
         Imagem do curso
-        <Button onClick={toggleEdit}>
+        <Button variant="ghost" onClick={toggleEdit}>
           {isEditting && (
             <>Cancelar</>
           )}
@@ -93,7 +93,7 @@ export const ImageForm = ({
             <ImageIcon className="h-10 w-10 text-slate-500" />
           </div>
         ) : (
-          <div className="relative aspect-video mt-2">
+          <div className="relative aspect-video mt-4">
             <Image 
               alt="Upload"
               fill
